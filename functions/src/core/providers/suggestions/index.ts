@@ -50,16 +50,26 @@ export class QuizletSuggestion {
     }
   }
 
-  async getDefinition() {
+  async getDefinition({
+    type,
+    wordLang,
+    defLang,
+    word,
+  }: {
+    type: 'definition' | 'word';
+    wordLang: string;
+    defLang: string;
+    word: string;
+  }) {
     // word - ?clientId=-2191095942591596258&limit=3&defLang=pt&localTermId=-1&prefix=hear&wordLang=en
 
     try {
       const response = await this.getQuizlet({
-        type: 'definition',
-        wordLang: 'en',
-        defLang: 'pt',
+        type,
+        wordLang,
+        defLang,
+        word,
         prefix: '',
-        word: 'love',
       });
 
       return response;
@@ -68,15 +78,26 @@ export class QuizletSuggestion {
     }
   }
 
-  async getWord() {
+  async getWord({
+    type,
+    wordLang,
+    defLang,
+    prefix,
+  }: {
+    type: 'definition' | 'word';
+    wordLang: string;
+    defLang: string;
+    prefix: string;
+    word: string;
+  }) {
     // word - ?clientId=-2191095942591596258&limit=3&defLang=pt&localTermId=-1&prefix=hear&wordLang=en
 
     try {
       const response = await this.getQuizlet({
-        type: 'word',
-        wordLang: 'en',
-        defLang: 'pt',
-        prefix: 'hear',
+        type,
+        wordLang,
+        defLang,
+        prefix,
       });
 
       return response;
