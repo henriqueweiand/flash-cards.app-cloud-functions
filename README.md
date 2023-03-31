@@ -3,7 +3,25 @@
 ## How to use
 please inform token Authorization bearer for all requests
 - https://us-central1-flash-cards-app-hw.cloudfunctions.net/app/suggestions/word
+```js
+{
+	"type": "word",
+	"wordLang": "en",
+	"defLang": "pt",
+	"prefix": "hear"
+}
+```
+
 - https://us-central1-flash-cards-app-hw.cloudfunctions.net/app/suggestions/definition
+```js
+{
+	"type": "definition",
+	"wordLang": "en",
+	"defLang": "pt",
+	"prefix": "",
+	"word": "love"
+}
+```
 
 ## How to tun
 1. Access `functions`;
