@@ -5,6 +5,7 @@ import { IAxiosParams } from './interface';
 export class OpenIASuggestion {
   private readonly openIAURL =
     'https://api.openai.com/v1/engines/text-davinci-003-playground/completions';
+  private readonly TOKEN = 'AQUI';
 
   async getOpenIA({
     fromLanguage,
@@ -28,7 +29,7 @@ export class OpenIASuggestion {
       const response = await axios.post<any>(`${this.openIAURL}`, {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer AQUIIIII`,
+          Authorization: `Bearer ${this.TOKEN}`,
         },
         params,
       });
