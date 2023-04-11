@@ -3,10 +3,8 @@ import axios from 'axios';
 import { ResponseChatGPT, TranslationOptionsResponse } from './interface';
 
 export class OpenIASuggestion {
-  private readonly openIAURL =
-    'https://api.openai.com/v1/engines/text-davinci-003-playground/completions';
-  private readonly TOKEN =
-    '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';
+  private readonly openIAURL = process.env.OPENIA_URL;
+  private readonly TOKEN = process.env.OPENIA_TOKEN;
 
   async getOpenIA({
     fromLanguage,
