@@ -4,7 +4,6 @@ import { SuggestionsController } from '../modules/suggestions/Suggestions.contro
 const suggestionsRoutes = Router();
 const suggestionsController = new SuggestionsController();
 
-suggestionsRoutes.get('/word', suggestionsController.word);
-suggestionsRoutes.get('/definition', suggestionsController.definition);
+suggestionsRoutes.post('/word', suggestionsController.word);
 
 export { suggestionsRoutes };
