@@ -16,14 +16,14 @@ admin.initializeApp();
 const app = express();
 
 Sentry.init({
-    dsn: process.env.SENTRY_DSN,
-    integrations: [
-        new Sentry.Integrations.Http({ tracing: true }),
-        new Tracing.Integrations.Express({ app }),
-        ...Sentry.autoDiscoverNodePerformanceMonitoringIntegrations(),
-    ],
+  dsn: process.env.SENTRY_DSN,
+  integrations: [
+    new Sentry.Integrations.Http({ tracing: true }),
+    new Tracing.Integrations.Express({ app }),
+    ...Sentry.autoDiscoverNodePerformanceMonitoringIntegrations(),
+  ],
 
-    tracesSampleRate: 1.0,
+  tracesSampleRate: 1.0,
 });
 
 app.use(Sentry.Handlers.requestHandler());

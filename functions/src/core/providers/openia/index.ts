@@ -19,7 +19,7 @@ export class OpenIASuggestion {
       const response = await axios.post<ResponseChatGPT>(
         `${this.openIAURL}`,
         {
-          prompt: `return a JSON of four right translation options for the word “${word}” from ${fromLanguage} into ${targetLanguage} and then more four wrong options. index of right call 'right' and wrong, 'wrong'`,
+          prompt: `return a JSON of four right translation options for the word “${word}” from ${fromLanguage} into ${targetLanguage} and then more four wrong options. Use index called right and wrong. don't send anything else`,
           temperature: 0.22,
           max_tokens: 500,
           top_p: 1,
@@ -33,6 +33,7 @@ export class OpenIASuggestion {
           },
         },
       );
+
       return response.data;
     } catch (e) {
       throw new Error(`There was an error to request chatgpt3 api`);
@@ -58,7 +59,14 @@ export class OpenIASuggestion {
       if (response.choices.length > 0) {
         const values = response.choices[0];
 
-        return JSON.parse(values.text) as TranslationOptionsResponse;
+        const jsonMatch = values.text.match(/\{.*\}/s);
+
+        if (jsonMatch) {
+          const jsonString = jsonMatch[0].trim();
+          return JSON.parse(jsonString) as TranslationOptionsResponse;
+        } else {
+          throw new Error(`The JSON was not found ${values.text}`);
+        }
       } else {
         throw new Error(`There is no choises in the response`);
       }

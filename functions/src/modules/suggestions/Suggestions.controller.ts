@@ -16,7 +16,6 @@ class SuggestionsController {
 
     if (!!params.fromLanguage && !!params.targetLanguage && !!params.word) {
       const wordSuggestions = await providerSuggestions.getWord(params);
-
       return response.status(200).json(wordSuggestions);
     } else {
       return response.status(422).json({});
