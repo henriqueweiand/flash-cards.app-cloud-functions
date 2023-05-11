@@ -11,7 +11,7 @@ please inform IDToken Authorization bearer for all requests
 }
 ```
 
-## How to tun
+## How to run
 1. Access `functions`;
 2. Copy .env-local to .env and fill the variables;
 3. Install dependencies;
