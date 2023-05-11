@@ -1,5 +1,8 @@
 # flash-cards.app-cloud-functions
 
+Blog post: https://blog.henriquew.com/flash-cards-apps-with-chatgpt
+Demo: https://www.youtube.com/watch?v=zztOW_yS5EU
+
 ## How to use
 please inform IDToken Authorization bearer for all requests
 - Endpoint
